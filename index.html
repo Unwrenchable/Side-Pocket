@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Side Pocket Apparel — Pool and billiards apparel &amp; accessories for players and fans. Shop tees, polos, headwear and pool gear." />
+  <title>Side Pocket Apparel | Premium Streetwear</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/main.css" />
+</head>
+<body>
+
+<!-- ===== HEADER / NAV ===== -->
+<header class="site-header" role="banner">
+  <div class="container">
+    <nav class="nav-inner" role="navigation" aria-label="Main navigation">
+      <a class="nav-logo" href="index.html" aria-label="Side Pocket Apparel — Home">
+        <img class="nav-logo-img" src="images/logo.svg" alt="Side Pocket Apparel" />
+      </a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">Our Story</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="nav-icon-btn" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+        </button>
+        <button class="nav-icon-btn" aria-label="Cart" onclick="openCart()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span class="cart-count" style="display:none">0</span>
+        </button>
+        <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<nav class="mobile-menu" aria-label="Mobile navigation">
+  <a href="index.html">Home</a>
+  <a href="shop.html">Shop</a>
+  <a href="about.html">Our Story</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="container hero-content">
+    <div class="hero-eyebrow" aria-hidden="true">
+      <span class="line"></span>
+      <span>For Pool Players &amp; Fans</span>
+    </div>
+
+    <h1 class="hero-title" id="hero-title">
+      Wear Your<br/>
+      <span class="highlight">Game</span>
+    </h1>
+
+    <p class="hero-description">
+      Clothing and accessories built for pool players, billiards fans,
+      and everyone who brings their game on and off the table.
+    </p>
+
+    <div class="hero-actions">
+      <a href="shop.html" class="btn btn-primary">
+        Shop Collection
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+        </svg>
+      </a>
+      <a href="about.html" class="btn btn-outline">Our Story</a>
+    </div>
+
+    <div class="hero-stats" role="list" aria-label="Brand highlights">
+      <div role="listitem">
+        <span class="stat-number">500+</span>
+        <span class="stat-label">Styles Available</span>
+      </div>
+      <div role="listitem">
+        <span class="stat-number">10K+</span>
+        <span class="stat-label">Happy Customers</span>
+      </div>
+      <div role="listitem">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">Quality Guaranteed</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator" aria-hidden="true">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 5v14"/><path d="m19 12-7 7-7-7"/>
+    </svg>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ===== MARQUEE ===== -->
+<div class="marquee-section" aria-hidden="true">
+  <div class="marquee-track">
+    <!-- repeated twice for seamless loop -->
+    <span class="marquee-item">For Pool Players &amp; Fans<span class="dot"></span></span>
+    <span class="marquee-item">New Arrivals Every Week<span class="dot"></span></span>
+    <span class="marquee-item">8-Ball · 9-Ball · Snooker · All of the Above<span class="dot"></span></span>
+    <span class="marquee-item">57+ Styles Available<span class="dot"></span></span>
+    <span class="marquee-item">Follow Us @SidePocketApparel<span class="dot"></span></span>
+    <span class="marquee-item">For Pool Players &amp; Fans<span class="dot"></span></span>
+    <span class="marquee-item">New Arrivals Every Week<span class="dot"></span></span>
+    <span class="marquee-item">8-Ball · 9-Ball · Snooker · All of the Above<span class="dot"></span></span>
+    <span class="marquee-item">57+ Styles Available<span class="dot"></span></span>
+    <span class="marquee-item">Follow Us @SidePocketApparel<span class="dot"></span></span>
+  </div>
+</div>
+
+<!-- ===== FEATURED PRODUCTS ===== -->
+<section id="featured" aria-labelledby="featured-title">
+  <div class="container">
+    <div class="products-header">
+      <div>
+        <span class="section-label">New Arrivals</span>
+        <h2 class="section-title" id="featured-title">Featured Drops</h2>
+      </div>
+      <a href="shop.html" class="btn btn-ghost">
+        View All
+        <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="products-grid" role="list" id="featured-grid">
+      <!-- Products loaded dynamically from /api/products -->
+      <div style="grid-column:1/-1;text-align:center;padding:2rem;color:#8a8278">Loading products…</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CATEGORY SHOWCASE ===== -->
+<section id="categories" aria-labelledby="categories-title">
+  <div class="container">
+    <span class="section-label">Browse By</span>
+    <h2 class="section-title" id="categories-title">Shop Categories</h2>
+
+    <div class="categories-grid" role="list">
+
+      <a href="shop.html?cat=mens-tees" class="category-card" role="listitem" aria-label="Shop Men's Tees">
+        <div class="category-bg cat-tee"></div>
+        <div class="category-overlay"></div>
+        <div class="category-content">
+          <p class="category-label">Category</p>
+          <h3 class="category-name">Men's Tees</h3>
+          <span class="category-count">20 styles</span>
+        </div>
+        <div class="category-arrow" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+          </svg>
+        </div>
+      </a>
+
+      <a href="shop.html?cat=polos" class="category-card" role="listitem" aria-label="Shop Polos">
+        <div class="category-bg cat-hoodie"></div>
+        <div class="category-overlay"></div>
+        <div class="category-content">
+          <p class="category-label">Category</p>
+          <h3 class="category-name">Polos</h3>
+          <span class="category-count">11 styles</span>
+        </div>
+        <div class="category-arrow" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+          </svg>
+        </div>
+      </a>
+
+      <a href="shop.html?cat=womens" class="category-card" role="listitem" aria-label="Shop Women's">
+        <div class="category-bg cat-headwear"></div>
+        <div class="category-overlay"></div>
+        <div class="category-content">
+          <p class="category-label">Category</p>
+          <h3 class="category-name">Women's</h3>
+          <span class="category-count">15 styles</span>
+        </div>
+        <div class="category-arrow" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+          </svg>
+        </div>
+      </a>
+
+      <a href="shop.html?cat=accessories" class="category-card" role="listitem" aria-label="Shop Accessories">
+        <div class="category-bg cat-bottoms"></div>
+        <div class="category-overlay"></div>
+        <div class="category-content">
+          <p class="category-label">Category</p>
+          <h3 class="category-name">Accessories</h3>
+          <span class="category-count">9 styles</span>
+        </div>
+        <div class="category-arrow" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+          </svg>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== BRAND STORY ===== -->
+<section class="brand-story" aria-labelledby="story-title">
+  <div class="container">
+    <div class="brand-story-inner">
+      <div class="brand-visual" aria-hidden="true">
+        <div class="brand-visual-main">
+          <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+            <svg width="180" height="180" viewBox="0 0 24 24" fill="none" stroke="rgba(200,169,110,0.3)" stroke-width="0.5">
+              <path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="brand-visual-badge">
+          <span class="badge-year">2018</span>
+          <span class="badge-text">Est.</span>
+        </div>
+      </div>
+
+      <div class="brand-story-text">
+        <span class="section-label">Who We Are</span>
+        <h2 class="section-title" id="story-title">We Bring Something to the Table</h2>
+        <p>
+          Side Pocket Apparel makes clothing and accessories with one focus —
+          pool players and fans, just like us. Whether you call it pool or billiards,
+          prefer snooker, or just sit back and heckle the would-be hustlers,
+          we've got something for you.
+        </p>
+        <p>
+          Eight-ball, nine-ball, cut-throat, or all of the above —
+          APA rules, BCA rules, or bar rules — you belong here.
+        </p>
+
+        <div class="brand-values" role="list">
+          <div class="brand-value" role="listitem">
+            <div class="value-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="value-label">Quality First</p>
+              <p class="value-desc">Premium fabrics, built to last</p>
+            </div>
+          </div>
+          <div class="brand-value" role="listitem">
+            <div class="value-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 8v4l3 3"/>
+              </svg>
+            </div>
+            <div>
+              <p class="value-label">Fresh Drops</p>
+              <p class="value-desc">New styles every week</p>
+            </div>
+          </div>
+          <div class="brand-value" role="listitem">
+            <div class="value-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <div>
+              <p class="value-label">Community</p>
+              <p class="value-desc">10,000+ loyal customers</p>
+            </div>
+          </div>
+          <div class="brand-value" role="listitem">
+            <div class="value-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </div>
+            <div>
+              <p class="value-label">Fast Delivery</p>
+              <p class="value-desc">Ships within 2–5 business days</p>
+            </div>
+          </div>
+        </div>
+
+        <a href="about.html" class="btn btn-outline">Read Our Story</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section aria-labelledby="testimonials-title">
+  <div class="container">
+    <div class="testimonials-header" style="text-align:center;margin-bottom:var(--spacing-xl)">
+      <span class="section-label">What People Say</span>
+      <h2 class="section-title" id="testimonials-title">Customer Love</h2>
+    </div>
+
+    <div class="testimonials-grid" role="list">
+
+      <article class="testimonial-card" role="listitem">
+        <div class="stars" aria-label="5 out of 5 stars">
+          ★★★★★
+        </div>
+        <p class="testimonial-text">
+          "The hoodie I grabbed is honestly the best quality piece I own.
+          Thick, comfortable, and the fit is perfect. Already ordered two more."
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar" aria-hidden="true">JM</div>
+          <div>
+            <p class="author-name">Jordan M.</p>
+            <p class="author-location">Chicago, IL</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="testimonial-card" role="listitem">
+        <div class="stars" aria-label="5 out of 5 stars">
+          ★★★★★
+        </div>
+        <p class="testimonial-text">
+          "Side Pocket slaps. The tees are lightweight but don't feel cheap.
+          I've washed mine like 20 times and they still look fresh off the rack."
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar" aria-hidden="true">AT</div>
+          <div>
+            <p class="author-name">Alex T.</p>
+            <p class="author-location">Atlanta, GA</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="testimonial-card" role="listitem">
+        <div class="stars" aria-label="5 out of 5 stars">
+          ★★★★★
+        </div>
+        <p class="testimonial-text">
+          "Shipped faster than expected, packed super clean, and the fit guide
+          was spot on. This is what every online clothing brand should be doing."
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar" aria-hidden="true">SR</div>
+          <div>
+            <p class="author-name">Sam R.</p>
+            <p class="author-location">Los Angeles, CA</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== NEWSLETTER ===== -->
+<section class="newsletter" aria-labelledby="newsletter-title">
+  <div class="container">
+    <div class="newsletter-inner">
+      <div class="newsletter-icon" aria-hidden="true">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+      </div>
+      <h2 class="newsletter-title" id="newsletter-title">Get Early Access</h2>
+      <p class="newsletter-subtitle">
+        Join the Side Pocket crew. Be first to know about new drops,
+        exclusive deals, and member-only offers.
+      </p>
+      <form class="newsletter-form" id="newsletter-form" novalidate>
+        <input
+          class="newsletter-input"
+          type="email"
+          id="newsletter-email"
+          placeholder="Your email address"
+          aria-label="Email address"
+          required
+        />
+        <button class="btn btn-primary" type="submit">Subscribe</button>
+      </form>
+      <p class="newsletter-disclaimer" id="newsletter-msg">No spam. Unsubscribe anytime.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="nav-logo" href="index.html" aria-label="Side Pocket Apparel — Home">
+          <img class="nav-logo-img" src="images/logo.svg" alt="Side Pocket Apparel" />
+        </a>
+        <p class="footer-tagline">
+          Pool and billiards apparel &amp; accessories for players and fans —
+          on and off the table.
+        </p>
+        <nav class="social-links" aria-label="Social media links">
+          <!-- Instagram -->
+          <a href="#" class="social-link" aria-label="Follow us on Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+            </svg>
+          </a>
+          <!-- TikTok -->
+          <a href="#" class="social-link" aria-label="Follow us on TikTok">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+            </svg>
+          </a>
+          <!-- Twitter/X -->
+          <a href="#" class="social-link" aria-label="Follow us on X (Twitter)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+          <!-- YouTube -->
+          <a href="#" class="social-link" aria-label="Subscribe on YouTube">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
+              <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/>
+            </svg>
+          </a>
+        </nav>
+      </div>
+
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="shop.html">All Products</a></li>
+          <li><a href="shop.html?cat=hoodies">Hoodies</a></li>
+          <li><a href="shop.html?cat=tees">Tees</a></li>
+          <li><a href="shop.html?cat=headwear">Headwear</a></li>
+          <li><a href="shop.html?cat=bottoms">Bottoms</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Help</h4>
+        <ul>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="#">Shipping Info</a></li>
+          <li><a href="#">Returns &amp; Exchanges</a></li>
+          <li><a href="#">Size Guide</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Wholesale</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2025 Side Pocket Apparel. All rights reserved.</p>
+      <nav class="footer-legal" aria-label="Legal links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Accessibility</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== CART SIDEBAR ===== -->
+<div class="cart-overlay" role="presentation"></div>
+<aside class="cart-sidebar" aria-label="Shopping cart" aria-modal="true">
+  <div class="cart-header">
+    <h3>Your Cart</h3>
+    <button class="cart-close" aria-label="Close cart">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 6 6 18M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+  <div class="cart-body">
+    <div class="cart-empty">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+      </svg>
+      <p>Your cart is empty</p>
+      <button class="btn btn-outline" onclick="closeCart()">Browse Collection</button>
+    </div>
+  </div>
+  <div class="cart-footer" style="display:none">
+    <div class="cart-subtotal">
+      <span class="cart-subtotal-label">Subtotal</span>
+      <span class="cart-subtotal-value">$0.00</span>
+    </div>
+    <button class="cart-checkout-btn">Proceed to Checkout</button>
+    <button class="cart-continue" onclick="closeCart()">Continue Shopping</button>
+  </div>
+</aside>
+
+<!-- ===== TOAST ===== -->
+<div class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+<script src="scripts/cart.js"></script>
+<script src="js/main.js"></script>
+<script>
+// ── Load featured products from API ──────────────────────
+(async function loadFeatured() {
+  const grid = document.getElementById('featured-grid');
+  try {
+    const res = await fetch('/api/products');
+    const data = await res.json();
+    const all = (data.products || []).filter(p => p.published);
+    const newArrivals = all.filter(p => p.badge === 'NEW');
+    const featured = [...newArrivals, ...all.filter(p => p.badge !== 'NEW')].slice(0, 8);
+    if (!featured.length) { grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:2rem;color:#8a8278">No products available.</div>'; return; }
+    grid.innerHTML = featured.map(p => buildProductCard(p)).join('');
+    attachQuickAdd(grid);
+  } catch (e) {
+    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:2rem;color:#8a8278">Could not load products.</div>';
+  }
+})();
+
+function buildProductCard(p) {
+  const badgeHtml = p.badge ? `<span class="product-badge ${p.badge.toLowerCase() === 'sale' ? 'sale' : 'new'}">${p.badge}</span>` : '';
+  const origHtml = p.originalPrice ? `<span class="product-price-original">$${p.originalPrice.toFixed(2)}</span>` : '';
+  const imgHtml = p.image
+    ? `<img src="${p.image}" alt="${escHtml(p.name)}" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:inherit" onerror="this.style.display='none'">`
+    : `<svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.3"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg>`;
+  const linkAttr = p.link ? `href="${escHtml(p.link)}" target="_blank" rel="noopener"` : 'href="shop.html"';
+  return `<article class="product-card" role="listitem" data-id="${p.id}" data-name="${escHtml(p.name)}" data-price="${p.price}" data-category="${p.category||''}">
+    <div class="product-image-wrap">
+      <div class="product-image-placeholder" aria-hidden="true">${imgHtml}</div>
+      ${badgeHtml}
+      <div class="product-quick-add">
+        <a class="quick-add-btn" ${linkAttr} aria-label="View ${escHtml(p.name)}">View Product</a>
+      </div>
+    </div>
+    <div class="product-info">
+      <p class="product-category">${escHtml((p.category||'').replace('-',' '))}</p>
+      <h3 class="product-name"><a ${linkAttr} style="color:inherit;text-decoration:none;">${escHtml(p.name)}</a></h3>
+      <div class="product-price-row">
+        <span class="product-price">$${p.price.toFixed(2)}</span>
+        ${origHtml}
+      </div>
+    </div>
+  </article>`;
+}
+
+function attachQuickAdd(container) {
+  container.querySelectorAll('.quick-add-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const product = JSON.parse(this.dataset.product);
+      if (window.SPCart) { SPCart.addItem(product, 1); SPCart.showToast(product.name + ' added to cart', 'success'); }
+    });
+  });
+}
+
+function escHtml(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+// ── Newsletter form via API ────────────────────────────────
+document.getElementById('newsletter-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const email = document.getElementById('newsletter-email').value.trim();
+  const msg = document.getElementById('newsletter-msg');
+  if (!email) return;
+  try {
+    const r = await fetch('/api/newsletter', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest' }, body: JSON.stringify({ email }) });
+    const data = await r.json();
+    if (r.ok || data.ok) {
+      msg.textContent = '🎱 You\'re in! Check your inbox.';
+      msg.style.color = '#15803d';
+      document.getElementById('newsletter-email').value = '';
+    } else {
+      msg.textContent = data.error || 'Something went wrong. Please try again.';
+      msg.style.color = '#ef4444';
+    }
+  } catch {
+    msg.textContent = 'Something went wrong. Please try again.';
+    msg.style.color = '#ef4444';
+  }
+});
+function updateCartCount() {
+  const count = window.SPCart ? SPCart.getCount() : 0;
+  document.querySelectorAll('.cart-count').forEach(el => {
+    el.textContent = count;
+    el.style.display = count > 0 ? 'flex' : 'none';
+  });
+}
+window.addEventListener('cart:updated', updateCartCount);
+document.addEventListener('DOMContentLoaded', updateCartCount);
+</script>
+</body>
+</html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Shop Side Pocket Apparel — browse hoodies, tees, headwear, bottoms and accessories." />
+  <title>Shop | Side Pocket Apparel</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/main.css" />
+</head>
+<body>
+
+<!-- ===== HEADER / NAV ===== -->
+<header class="site-header" role="banner">
+  <div class="container">
+    <nav class="nav-inner" role="navigation" aria-label="Main navigation">
+      <a class="nav-logo" href="index.html" aria-label="Side Pocket Apparel — Home">
+        <img class="nav-logo-img" src="images/logo.svg" alt="Side Pocket Apparel" />
+      </a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">Our Story</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="nav-icon-btn" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+        </button>
+        <button class="nav-icon-btn" aria-label="Cart" onclick="openCart()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span class="cart-count" style="display:none">0</span>
+        </button>
+        <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<nav class="mobile-menu" aria-label="Mobile navigation">
+  <a href="index.html">Home</a>
+  <a href="shop.html">Shop</a>
+  <a href="about.html">Our Story</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<!-- ===== SHOP HERO ===== -->
+<section class="shop-hero" aria-labelledby="shop-title">
+  <div class="container">
+    <span class="section-label">The Collection</span>
+    <h1 class="section-title" id="shop-title">Shop All</h1>
+    <p class="section-subtitle" style="margin:0 auto;">
+      Browse our full lineup. New drops added weekly.
+    </p>
+  </div>
+</section>
+
+<!-- ===== SHOP CONTROLS + GRID ===== -->
+<section>
+  <div class="container">
+    <div class="shop-controls">
+      <div class="filter-tabs" role="group" aria-label="Filter by category">
+        <button class="filter-tab active" data-filter="all">All</button>
+        <button class="filter-tab" data-filter="mens-tees">Men's Tees</button>
+        <button class="filter-tab" data-filter="long-sleeve">Long Sleeve</button>
+        <button class="filter-tab" data-filter="polos">Polos</button>
+        <button class="filter-tab" data-filter="womens">Women's</button>
+        <button class="filter-tab" data-filter="headwear">Headwear</button>
+        <button class="filter-tab" data-filter="accessories">Accessories</button>
+      </div>
+
+      <label for="sort-select" class="sr-only">Sort by</label>
+      <select class="sort-select" id="sort-select" aria-label="Sort products">
+        <option value="featured">Featured</option>
+        <option value="price-asc">Price: Low → High</option>
+        <option value="price-desc">Price: High → Low</option>
+        <option value="newest">Newest First</option>
+      </select>
+    </div>
+
+    <div class="products-grid" role="list" id="shop-grid">
+      <!-- Products loaded dynamically from /api/products -->
+      <div id="shop-loading" style="grid-column:1/-1;text-align:center;padding:3rem;color:#8a8278">Loading products…</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NEWSLETTER ===== -->
+<section class="newsletter" aria-labelledby="shop-newsletter-title">
+  <div class="container">
+    <div class="newsletter-inner">
+      <div class="newsletter-icon" aria-hidden="true">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+      </div>
+      <h2 class="newsletter-title" id="shop-newsletter-title">Get Early Access</h2>
+      <p class="newsletter-subtitle">
+        Be the first to know when new styles drop.
+      </p>
+      <form class="newsletter-form" id="shop-newsletter-form" novalidate>
+        <input class="newsletter-input" id="shop-newsletter-email" type="email" placeholder="Your email address" aria-label="Email address" required />
+        <button class="btn btn-primary" type="submit">Subscribe</button>
+      </form>
+      <p class="newsletter-disclaimer" id="shop-newsletter-msg">No spam. Unsubscribe anytime.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="nav-logo" href="index.html" aria-label="Side Pocket Apparel — Home">
+        <img class="nav-logo-img" src="images/logo.svg" alt="Side Pocket Apparel" />
+      </a>
+        <p class="footer-tagline">
+          Premium streetwear built for those who carry their confidence wherever they go.
+        </p>
+        <nav class="social-links" aria-label="Social media links">
+          <a href="#" class="social-link" aria-label="Follow us on Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Follow us on TikTok">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Follow us on X">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="shop.html">All Products</a></li>
+          <li><a href="shop.html?cat=hoodies">Hoodies</a></li>
+          <li><a href="shop.html?cat=tees">Tees</a></li>
+          <li><a href="shop.html?cat=headwear">Headwear</a></li>
+          <li><a href="shop.html?cat=bottoms">Bottoms</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Help</h4>
+        <ul>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="#">Shipping Info</a></li>
+          <li><a href="#">Returns &amp; Exchanges</a></li>
+          <li><a href="#">Size Guide</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2025 Side Pocket Apparel. All rights reserved.</p>
+      <nav class="footer-legal" aria-label="Legal links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Accessibility</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<!-- Cart Sidebar -->
+<div class="cart-overlay" role="presentation"></div>
+<aside class="cart-sidebar" aria-label="Shopping cart" aria-modal="true">
+  <div class="cart-header">
+    <h3>Your Cart</h3>
+    <button class="cart-close" aria-label="Close cart">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 6 6 18M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+  <div class="cart-body">
+    <div class="cart-empty">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+      </svg>
+      <p>Your cart is empty</p>
+      <button class="btn btn-outline" onclick="closeCart()">Continue Shopping</button>
+    </div>
+  </div>
+  <div class="cart-footer" style="display:none">
+    <div class="cart-subtotal">
+      <span class="cart-subtotal-label">Subtotal</span>
+      <span class="cart-subtotal-value">$0.00</span>
+    </div>
+    <button class="cart-checkout-btn">Proceed to Checkout</button>
+    <button class="cart-continue" onclick="closeCart()">Continue Shopping</button>
+  </div>
+</aside>
+
+<div class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+<script src="scripts/cart.js"></script>
+<script src="js/main.js"></script>
+<script>
+'use strict';
+
+let allProducts = [];
+let activeFilter = 'all';
+let activeSort = 'featured';
+
+function escHtml(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function buildProductCard(p) {
+  const badgeHtml = p.badge ? `<span class="product-badge ${p.badge.toLowerCase()==='sale'?'sale':'new'}">${p.badge}</span>` : '';
+  const origHtml = p.originalPrice ? `<span class="product-price-original">$${p.originalPrice.toFixed(2)}</span>` : '';
+  const imgHtml = p.image
+    ? `<img src="${p.image}" alt="${escHtml(p.name)}" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:inherit" onerror="this.style.display='none'">`
+    : `<svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.3"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg>`;
+  const linkAttr = p.link ? `href="${escHtml(p.link)}" target="_blank" rel="noopener"` : 'href="#"';
+  return `<article class="product-card" role="listitem" data-id="${p.id}" data-category="${p.category||''}" data-price="${p.price}">
+    <div class="product-image-wrap">
+      <div class="product-image-placeholder" aria-hidden="true">${imgHtml}</div>
+      ${badgeHtml}
+      <div class="product-quick-add">
+        <button class="quick-add-btn" data-product='${JSON.stringify({id:p.id,sku:p.sku,name:p.name,price:p.price,image:p.image||null})}' aria-label="Quick add ${escHtml(p.name)} to cart">Add to Cart</button>
+        ${p.link ? `<a class="btn btn-outline" style="margin-top:.5rem;font-size:.75rem;padding:.4rem .9rem;" ${linkAttr}>View Product</a>` : ''}
+      </div>
+    </div>
+    <div class="product-info">
+      <p class="product-category">${escHtml((p.category||'').replace('-',' '))}</p>
+      <h3 class="product-name"><a ${linkAttr} style="color:inherit;text-decoration:none;">${escHtml(p.name)}</a></h3>
+      <div class="product-price-row">
+        <span class="product-price">$${p.price.toFixed(2)}</span>
+        ${origHtml}
+      </div>
+    </div>
+  </article>`;
+}
+
+function renderGrid() {
+  const grid = document.getElementById('shop-grid');
+  let filtered = allProducts.filter(p => p.published !== false);
+  if (activeFilter !== 'all') filtered = filtered.filter(p => p.category === activeFilter);
+  if (activeSort === 'price-asc') filtered.sort((a,b) => a.price - b.price);
+  else if (activeSort === 'price-desc') filtered.sort((a,b) => b.price - a.price);
+  else if (activeSort === 'newest') filtered.reverse();
+  if (!filtered.length) {
+    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:3rem;color:#8a8278">No products found.</div>';
+    return;
+  }
+  grid.innerHTML = filtered.map(p => buildProductCard(p)).join('');
+  grid.querySelectorAll('.quick-add-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const product = JSON.parse(this.dataset.product);
+      if (window.SPCart) { SPCart.addItem(product, 1); SPCart.showToast(product.name + ' added to cart', 'success'); }
+    });
+  });
+}
+
+(async function loadShopProducts() {
+  try {
+    const res = await fetch('/api/products');
+    const data = await res.json();
+    allProducts = data.products || [];
+    renderGrid();
+    // Pre-filter based on URL param
+    const urlCat = new URLSearchParams(window.location.search).get('cat');
+    if (urlCat) {
+      const tab = document.querySelector(`.filter-tab[data-filter="${urlCat}"]`);
+      if (tab) tab.click();
+    }
+  } catch (e) {
+    document.getElementById('shop-grid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:3rem;color:#8a8278">Could not load products.</div>';
+  }
+})();
+
+// Filter tabs
+document.querySelectorAll('.filter-tab').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    activeFilter = this.dataset.filter;
+    renderGrid();
+  });
+});
+
+// Sort
+document.getElementById('sort-select').addEventListener('change', function() {
+  activeSort = this.value;
+  renderGrid();
+});
+
+// Newsletter
+document.getElementById('shop-newsletter-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const email = document.getElementById('shop-newsletter-email').value.trim();
+  const msg = document.getElementById('shop-newsletter-msg');
+  if (!email) return;
+  try {
+    const r = await fetch('/api/newsletter', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest' }, body: JSON.stringify({ email }) }); {
+  const count = window.SPCart ? SPCart.getCount() : 0;
+  document.querySelectorAll('.cart-count').forEach(el => {
+    el.textContent = count;
+    el.style.display = count > 0 ? 'flex' : 'none';
+  });
+}
+window.addEventListener('cart:updated', updateCartCount);
+document.addEventListener('DOMContentLoaded', updateCartCount);
+</script>
+</body>
+</html>

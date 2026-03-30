@@ -1,0 +1,10 @@
+node_modules/
+server/node_modules/
+.env
+server/.env
+server/data/db.json
+server/data/newsletter.json
+.vercel/
+dist/
+public/
+*.log

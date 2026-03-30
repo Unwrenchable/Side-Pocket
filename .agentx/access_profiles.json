@@ -1,0 +1,34 @@
+{
+  "profiles": {
+    "safe": {
+      "name": "Safe",
+      "description": "Read-only access. No destructive operations.",
+      "allowed_tools": ["read_file", "list_dir", "grep_search", "view_file"],
+      "denied_tools": ["apply_patch", "create_file", "delete_file", "run_in_terminal"],
+      "max_file_size_kb": 100,
+      "can_write": false,
+      "can_execute": false
+    },
+    "balanced": {
+      "name": "Balanced",
+      "description": "Standard development access. Can read, write files and run safe commands.",
+      "allowed_tools": ["read_file", "list_dir", "grep_search", "view_file", "apply_patch", "create_file", "run_in_terminal"],
+      "denied_tools": ["delete_file"],
+      "max_file_size_kb": 500,
+      "can_write": true,
+      "can_execute": true,
+      "execution_restrictions": ["no_sudo", "no_rm_rf", "no_env_modify"]
+    },
+    "power": {
+      "name": "Power",
+      "description": "Full development access including deployment operations.",
+      "allowed_tools": ["read_file", "list_dir", "grep_search", "view_file", "apply_patch", "create_file", "delete_file", "run_in_terminal", "github_repo", "runSubagent"],
+      "denied_tools": [],
+      "max_file_size_kb": 2048,
+      "can_write": true,
+      "can_execute": true,
+      "execution_restrictions": ["no_sudo"]
+    }
+  },
+  "default_profile": "balanced"
+}

@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Side Pocket Apparel — clothing and accessories built for pool players and billiards fans." />
+  <title>Our Story | Side Pocket Apparel</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/main.css" />
+</head>
+<body>
+
+<!-- ===== HEADER / NAV ===== -->
+<header class="site-header" role="banner">
+  <div class="container">
+    <nav class="nav-inner" role="navigation" aria-label="Main navigation">
+      <a class="nav-logo" href="index.html" aria-label="Side Pocket Apparel — Home">
+        <img class="nav-logo-img" src="images/logo.svg" alt="Side Pocket Apparel" />
+      </a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">Our Story</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="nav-icon-btn" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+        </button>
+        <button class="nav-icon-btn" aria-label="Cart" onclick="openCart()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span class="cart-count" style="display:none">0</span>
+        </button>
+        <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<nav class="mobile-menu" aria-label="Mobile navigation">
+  <a href="index.html">Home</a>
+  <a href="shop.html">Shop</a>
+  <a href="about.html">Our Story</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<!-- ===== ABOUT HERO ===== -->
+<section class="about-hero" aria-labelledby="about-title">
+  <div class="container">
+    <div class="about-hero-inner">
+      <div>
+        <span class="section-label">Our Story</span>
+        <h1 class="about-large-text" id="about-title">
+          For<br/>Pool<br/><span class="accent">Players.</span>
+        </h1>
+      </div>
+      <div>
+        <p class="about-intro-text">
+          If you're here, we know what you're thinking: who the heck is Side Pocket Apparel?
+          It's pretty simple — we make clothing and accessories with a focus on
+          pool players and fans, just like us (and hopefully like you).
+        </p>
+        <p class="about-intro-text" style="margin-top:1rem;">
+          Whether you call it pool or billiards, even if you prefer snooker;
+          whether you spend hours practicing your four-rail bank or just sit
+          back at the bar and heckle the would-be hustlers — we want to bring
+          something to the table.
+        </p>
+        <div style="margin-top:var(--spacing-xl)">
+          <a href="shop.html" class="btn btn-primary">
+            Shop the Collection
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS BAR ===== -->
+<div class="marquee-section" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">For Pool Players &amp; Fans<span class="dot"></span></span>
+    <span class="marquee-item">57+ Products<span class="dot"></span></span>
+    <span class="marquee-item">8-Ball · 9-Ball · Snooker<span class="dot"></span></span>
+    <span class="marquee-item">APA · BCA · Bar Rules<span class="dot"></span></span>
+    <span class="marquee-item">Follow Us @SidePocketApparel<span class="dot"></span></span>
+    <span class="marquee-item">For Pool Players &amp; Fans<span class="dot"></span></span>
+    <span class="marquee-item">57+ Products<span class="dot"></span></span>
+    <span class="marquee-item">8-Ball · 9-Ball · Snooker<span class="dot"></span></span>
+    <span class="marquee-item">APA · BCA · Bar Rules<span class="dot"></span></span>
+    <span class="marquee-item">Follow Us @SidePocketApparel<span class="dot"></span></span>
+  </div>
+</div>
+
+<!-- ===== MISSION ===== -->
+<section aria-labelledby="mission-title">
+  <div class="container">
+    <div class="brand-story-inner">
+      <div>
+        <span class="section-label">Our Mission</span>
+        <h2 class="section-title" id="mission-title">Something for Everyone at the Table</h2>
+        <p style="color:var(--color-text-muted);line-height:1.9;font-size:1.05rem;margin-bottom:1rem;">
+          Eight-ball, nine-ball, cut-throat, or all of the above —
+          APA rules, BCA rules, or bar rules. We play all the games,
+          and we make gear for all the players.
+        </p>
+        <p style="color:var(--color-text-muted);line-height:1.9;font-size:1.05rem;margin-bottom:1rem;">
+          From graphic tees and performance polos to pool gloves, cue cleaners,
+          and shaft protectors — Side Pocket Apparel has you covered on and
+          off the table.
+        </p>
+        <p style="color:var(--color-text-muted);line-height:1.9;font-size:1.05rem;">
+          While we personally have no problem with you rockin' your pool game
+          in your birthday suit, it's frowned upon in polite society.
+          So why not try hittin' the pub in some Side Pocket Apparel?
+        </p>
+      </div>
+      <div class="brand-visual" aria-hidden="true">
+        <div class="brand-visual-main" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;padding:2rem;">
+          <!-- Logo displayed large in the about visual -->
+          <img src="images/logo.svg" alt="" style="width:80%;max-width:340px;filter:brightness(0) invert(1) drop-shadow(0 4px 16px rgba(37,99,235,0.4));" />
+        </div>
+        <div class="brand-visual-badge">
+          <span class="badge-year">2018</span>
+          <span class="badge-text">Est.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TIMELINE ===== -->
+<section style="background:var(--color-surface);border-top:1px solid var(--color-border);border-bottom:1px solid var(--color-border);" aria-labelledby="timeline-title">
+  <div class="container">
+    <span class="section-label">The Journey</span>
+    <h2 class="section-title" id="timeline-title">How We Got Here</h2>
+
+    <div style="max-width:680px;margin-top:var(--spacing-xl)">
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <p class="timeline-year">2018</p>
+          <p class="timeline-title">The Beginning</p>
+          <p class="timeline-text">
+            Side Pocket launched with a small capsule collection — 3 tee designs
+            and a hoodie. Sold out in 72 hours from a single Instagram post.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <p class="timeline-year">2019</p>
+          <p class="timeline-title">Building the Community</p>
+          <p class="timeline-text">
+            We expanded into headwear and bottoms, and started showing up at
+            local pop-ups. Our customer base grew from a few hundred to over
+            5,000 loyal fans.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <p class="timeline-year">2021</p>
+          <p class="timeline-title">Going Online</p>
+          <p class="timeline-text">
+            Launched the first official e-commerce store. Fulfilled orders in
+            all 50 states within the first month. The Side Pocket community
+            was officially nationwide.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <p class="timeline-year">2023</p>
+          <p class="timeline-title">10,000 Customers Strong</p>
+          <p class="timeline-text">
+            Hit a major milestone — 10,000 customers served. Dropped our
+            biggest collection yet and introduced the signature SP logo
+            that now lives on every piece.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <p class="timeline-year">2025</p>
+          <p class="timeline-title">What's Next</p>
+          <p class="timeline-text">
+            New silhouettes, new collabs, and a bigger platform. The mission
+            stays the same: premium gear built for people who move differently.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TEAM ===== -->
+<section aria-labelledby="team-title">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--spacing-xl)">
+      <span class="section-label">The Team</span>
+      <h2 class="section-title" id="team-title">People Behind the Brand</h2>
+    </div>
+
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-photo" aria-hidden="true">MJ</div>
+        <p class="team-name">Marcus J.</p>
+        <p class="team-role">Founder &amp; Creative Director</p>
+        <p class="team-bio">
+          Streetwear enthusiast turned brand founder. Marcus built Side Pocket
+          from the ground up with nothing but a vision and a heat press.
+        </p>
+      </div>
+      <div class="team-card">
+        <div class="team-photo" aria-hidden="true">KW</div>
+        <p class="team-name">Kayla W.</p>
+        <p class="team-role">Head of Design</p>
+        <p class="team-bio">
+          Kayla brings every collection to life. Her eye for silhouette and
+          detail is what makes Side Pocket gear stand out on the rack.
+        </p>
+      </div>
+      <div class="team-card">
+        <div class="team-photo" aria-hidden="true">DJ</div>
+        <p class="team-name">Devon J.</p>
+        <p class="team-role">Operations &amp; Fulfillment</p>
+        <p class="team-bio">
+          Devon runs the logistics that keep orders moving. Fast shipping and
+          clean packaging are his signature.
+        </p>
+      </div>
+      <div class="team-card">
+        <div class="team-photo" aria-hidden="true">RL</div>
+        <p class="team-name">Raya L.</p>
+        <p class="team-role">Community &amp; Social</p>
+        <p class="team-bio">
+          Raya is the voice of the brand online. She keeps the community fed
+          with content, drops, and behind-the-scenes access.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VALUES ===== -->
+<section style="background:var(--color-surface);border-top:1px solid var(--color-border);" aria-labelledby="values-title">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--spacing-xl)">
+      <span class="section-label">What We Stand For</span>
+      <h2 class="section-title" id="values-title">Our Values</h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:var(--spacing-lg)">
+
+      <div class="testimonial-card">
+        <div class="value-icon" style="margin-bottom:var(--spacing-md);width:52px;height:52px;" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <h3 style="font-size:1.2rem;margin-bottom:0.5rem;">Quality Without Compromise</h3>
+        <p style="color:var(--color-text-muted);font-size:0.95rem;line-height:1.7;">
+          We use premium fabrics and rigorous quality checks. Every piece
+          must pass our standards before it reaches your door.
+        </p>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="value-icon" style="margin-bottom:var(--spacing-md);width:52px;height:52px;" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 8v4l3 3"/>
+          </svg>
+        </div>
+        <h3 style="font-size:1.2rem;margin-bottom:0.5rem;">Always Fresh</h3>
+        <p style="color:var(--color-text-muted);font-size:0.95rem;line-height:1.7;">
+          New styles drop weekly. We stay close to the culture and move fast
+          so your wardrobe never falls behind.
+        </p>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="value-icon" style="margin-bottom:var(--spacing-md);width:52px;height:52px;" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <h3 style="font-size:1.2rem;margin-bottom:0.5rem;">Community First</h3>
+        <p style="color:var(--color-text-muted);font-size:0.95rem;line-height:1.7;">
+          Our customers aren't just buyers — they're the brand. Their feedback
+          shapes every collection we release.
+        </p>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="value-icon" style="margin-bottom:var(--spacing-md);width:52px;height:52px;" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="1" x2="12" y2="23"/>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+        </div>
+        <h3 style="font-size:1.2rem;margin-bottom:0.5rem;">Real Value</h3>
+        <p style="color:var(--color-text-muted);font-size:0.95rem;line-height:1.7;">
+          Premium doesn't have to mean overpriced. We keep our margins fair
+          so you get quality gear at prices that make sense.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section style="text-align:center">
+  <div class="container">
+    <span class="section-label">Ready?</span>
+    <h2 class="section-title" style="max-width:480px;margin:0 auto var(--spacing-md);">Carry Your Confidence</h2>
+    <p style="color:var(--color-text-muted);max-width:420px;margin:0 auto var(--spacing-xl);">
+      Browse the latest collection and find your next statement piece.
+    </p>
+    <a href="shop.html" class="btn btn-primary" style="font-size:1rem;padding:1rem 2.5rem;">
+      Shop Now
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="nav-logo" href="index.html" aria-label="Side Pocket Apparel — Home">
+          <img class="nav-logo-img" src="images/logo.svg" alt="Side Pocket Apparel" />
+        </a>
+        <p class="footer-tagline">
+          Premium streetwear built for those who carry their confidence wherever they go.
+        </p>
+        <nav class="social-links" aria-label="Social media links">
+          <a href="#" class="social-link" aria-label="Follow us on Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Follow us on TikTok">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Follow us on X">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="shop.html">All Products</a></li>
+          <li><a href="shop.html?cat=hoodies">Hoodies</a></li>
+          <li><a href="shop.html?cat=tees">Tees</a></li>
+          <li><a href="shop.html?cat=headwear">Headwear</a></li>
+          <li><a href="shop.html?cat=bottoms">Bottoms</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Help</h4>
+        <ul>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="#">Shipping Info</a></li>
+          <li><a href="#">Returns &amp; Exchanges</a></li>
+          <li><a href="#">Size Guide</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2025 Side Pocket Apparel. All rights reserved.</p>
+      <nav class="footer-legal" aria-label="Legal links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Accessibility</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<!-- Cart Sidebar -->
+<div class="cart-overlay" role="presentation"></div>
+<aside class="cart-sidebar" aria-label="Shopping cart" aria-modal="true">
+  <div class="cart-header">
+    <h3>Your Cart</h3>
+    <button class="cart-close" aria-label="Close cart">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 6 6 18M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+  <div class="cart-body">
+    <div class="cart-empty">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+      </svg>
+      <p>Your cart is empty</p>
+      <a href="shop.html" class="btn btn-outline" onclick="closeCart()">Browse Collection</a>
+    </div>
+  </div>
+  <div class="cart-footer" style="display:none">
+    <div class="cart-subtotal">
+      <span class="cart-subtotal-label">Subtotal</span>
+      <span class="cart-subtotal-value">$0.00</span>
+    </div>
+    <button class="cart-checkout-btn">Proceed to Checkout</button>
+    <button class="cart-continue" onclick="closeCart()">Continue Shopping</button>
+  </div>
+</aside>
+
+<div class="toast-container" aria-live="polite" aria-atomic="true"></div>
+<script src="scripts/cart.js"></script>
+<script src="js/main.js"></script>
+<script>
+function updateCartCount() {
+  const count = window.SPCart ? SPCart.getCount() : 0;
+  document.querySelectorAll('.cart-count').forEach(el => {
+    el.textContent = count;
+    el.style.display = count > 0 ? 'flex' : 'none';
+  });
+}
+window.addEventListener('cart:updated', updateCartCount);
+document.addEventListener('DOMContentLoaded', updateCartCount);
+</script>
+</body>
+</html>
