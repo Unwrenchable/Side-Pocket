@@ -258,7 +258,7 @@ app.post('/api/stripe/create-checkout', csrfCheck, authMiddleware, async (req, r
       line_items: lineItems,
       mode: 'payment',
       success_url: `${origin}/order-success.html?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${origin}/shop`
+      cancel_url: `${origin}/shop.html`
     });
     res.json({ url: session.url });
   } catch (e) { console.error('Stripe error', e.message); res.status(500).json({ error: 'Checkout failed' }); }

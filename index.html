@@ -596,6 +596,20 @@ document.getElementById('newsletter-form').addEventListener('submit', async func
   if (!email) return;
   try {
     const r = await fetch('/api/newsletter', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest' }, body: JSON.stringify({ email }) });
+    const data = await r.json();
+    if (r.ok || data.ok) {
+      msg.textContent = '🎱 You\'re in! Check your inbox.';
+      msg.style.color = '#15803d';
+      document.getElementById('newsletter-email').value = '';
+    } else {
+      msg.textContent = data.error || 'Something went wrong. Please try again.';
+      msg.style.color = '#ef4444';
+    }
+  } catch {
+    msg.textContent = 'Something went wrong. Please try again.';
+    msg.style.color = '#ef4444';
+  }
+});
 function updateCartCount() {
   const count = window.SPCart ? SPCart.getCount() : 0;
   document.querySelectorAll('.cart-count').forEach(el => {
