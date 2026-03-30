@@ -109,15 +109,17 @@ app.use(express.json({ limit: '10mb' }));
 app.use(cookieParser());
 app.use(cors({ origin: true, credentials: true }));
 
-// ── CSRF protection for cookie-authenticated state-changing requests ───────
-// Enforces that the request includes a custom X-Requested-With header,
-// which cross-origin form submissions cannot set without a CORS pre-flight.
+// ── CSRF protection ────────────────────────────────────────
+// All state-changing requests must include the X-Requested-With header.
+// Cross-origin form/script submissions cannot set this header without a
+// CORS preflight, providing effective CSRF protection for JSON APIs.
 function csrfCheck(req, res, next) {
   if (['GET', 'HEAD', 'OPTIONS'].includes(req.method)) return next();
   const hdr = req.headers['x-requested-with'];
   if (!hdr) return res.status(403).json({ error: 'CSRF check failed: missing X-Requested-With header' });
   return next();
 }
+app.use(csrfCheck);
 
 // ── Rate limiters ──────────────────────────────────────────
 const authLimiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 20, standardHeaders: true, legacyHeaders: false });
@@ -145,9 +147,8 @@ function adminAuth(req, res, next) {
 }
 
 // ── Auth endpoints ─────────────────────────────────────────
-app.post('/api/register', csrfCheck, async (req, res) => {
+app.post('/api/register', async (req, res) => {
   const { email, password, name } = req.body;
-  if (!email || !password) return res.status(400).json({ error: 'Email and password required' });
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return res.status(400).json({ error: 'Invalid email format' });
   if (password.length < 6) return res.status(400).json({ error: 'Password must be at least 6 characters' });
   try {
@@ -173,7 +174,7 @@ app.post('/api/register', csrfCheck, async (req, res) => {
   }
 });
 
-app.post('/api/login', csrfCheck, async (req, res) => {
+app.post('/api/login', async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) return res.status(400).json({ error: 'Email and password required' });
   try {
@@ -187,7 +188,7 @@ app.post('/api/login', csrfCheck, async (req, res) => {
   } catch (err) { console.error('Login error:', err); res.status(500).json({ error: 'Server error' }); }
 });
 
-app.post('/api/logout', csrfCheck, (req, res) => { res.clearCookie('token'); res.json({ ok: true }); });
+app.post('/api/logout', (req, res) => { res.clearCookie('token'); res.json({ ok: true }); });
 
 app.get('/api/profile', authMiddleware, (req, res) => {
   const row = findUserById(req.user.id);
@@ -219,7 +220,7 @@ app.get('/api/instagram', async (req, res) => {
 });
 
 // ── Newsletter ─────────────────────────────────────────────
-app.post('/api/newsletter', csrfCheck, async (req, res) => {
+app.post('/api/newsletter', async (req, res) => {
   const { email } = req.body;
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
     return res.status(400).json({ error: 'Valid email required' });
@@ -239,7 +240,7 @@ app.post('/api/newsletter', csrfCheck, async (req, res) => {
 });
 
 // ── Stripe Checkout ────────────────────────────────────────
-app.post('/api/stripe/create-checkout', csrfCheck, authMiddleware, async (req, res) => {
+app.post('/api/stripe/create-checkout', authMiddleware, async (req, res) => {
   if (!stripe) return res.status(400).json({ error: 'Stripe not configured' });
   const { items } = req.body;
   if (!items || !Array.isArray(items)) return res.status(400).json({ error: 'Invalid items' });
@@ -264,7 +265,7 @@ app.post('/api/stripe/create-checkout', csrfCheck, authMiddleware, async (req, r
   } catch (e) { console.error('Stripe error', e.message); res.status(500).json({ error: 'Checkout failed' }); }
 });
 
-app.post('/api/create-order', csrfCheck, authMiddleware, (req, res) => {
+app.post('/api/create-order', authMiddleware, (req, res) => {
   const { items, amount_cents } = req.body;
   if (!items || !Array.isArray(items)) return res.status(400).json({ error: 'Invalid items' });
   try {
@@ -302,7 +303,7 @@ app.get('/api/admin/newsletter', adminAuth, (req, res) => {
   } catch { res.status(500).json({ error: 'Could not read newsletter list' }); }
 });
 
-app.post('/api/admin/save-products', adminAuth, csrfCheck, (req, res) => {
+app.post('/api/admin/save-products', adminAuth, (req, res) => {
   const products = req.body && Array.isArray(req.body.products) ? req.body.products : null;
   if (!products) return res.status(400).json({ error: 'Expected { products: [] }' });
   try {
@@ -312,8 +313,7 @@ app.post('/api/admin/save-products', adminAuth, csrfCheck, (req, res) => {
   } catch { res.status(500).json({ error: 'Could not save products' }); }
 });
 
-app.post('/api/admin/sync-instagram', adminAuth, csrfCheck, async (req, res) => {
-  const token = process.env.INSTAGRAM_ACCESS_TOKEN;
+app.post('/api/admin/sync-instagram', adminAuth, async (req, res) => {
   const userId = process.env.INSTAGRAM_USER_ID;
   if (!token || !userId) return res.status(400).json({ error: 'Instagram not configured' });
   try {
