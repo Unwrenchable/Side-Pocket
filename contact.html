@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="styles/main.css" />
 </head>
 <body>
 
@@ -383,6 +383,18 @@
 </aside>
 
 <div class="toast-container" aria-live="polite" aria-atomic="true"></div>
+<script src="scripts/cart.js"></script>
 <script src="js/main.js"></script>
+<script>
+function updateCartCount() {
+  const count = window.SPCart ? SPCart.getCount() : 0;
+  document.querySelectorAll('.cart-count').forEach(el => {
+    el.textContent = count;
+    el.style.display = count > 0 ? 'flex' : 'none';
+  });
+}
+window.addEventListener('cart:updated', updateCartCount);
+document.addEventListener('DOMContentLoaded', updateCartCount);
+</script>
 </body>
 </html>

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "side-pocket-orchestrator",
+    "role": "orchestrator",
+    "description": "Orchestrates full-stack development for Side Pocket Apparel e-commerce site. Coordinates frontend, backend, and deployment tasks.",
+    "tags": ["orchestrator", "ecommerce", "web"],
+    "capabilities": ["plan", "delegate", "review", "deploy"],
+    "required_tools": ["apply_patch", "create_file", "grep_search", "list_dir", "read_file", "runSubagent"],
+    "preferred_profile": "power",
+    "risk_level": "medium"
+  },
+  {
+    "id": "side-pocket-frontend",
+    "role": "frontend-engineer",
+    "description": "Implements and maintains HTML/CSS/JS frontend for Side Pocket Apparel. Handles responsive design, cart functionality, and UX.",
+    "tags": ["frontend", "html", "css", "javascript"],
+    "capabilities": ["html", "css", "javascript", "responsive-design"],
+    "required_tools": ["apply_patch", "create_file", "grep_search", "list_dir", "read_file"],
+    "preferred_profile": "balanced",
+    "risk_level": "low"
+  },
+  {
+    "id": "side-pocket-backend",
+    "role": "backend-engineer",
+    "description": "Maintains Node.js/Express server, API endpoints, authentication, and Stripe integration for Side Pocket Apparel.",
+    "tags": ["backend", "nodejs", "express", "api", "stripe"],
+    "capabilities": ["nodejs", "express", "jwt", "stripe", "email"],
+    "required_tools": ["apply_patch", "create_file", "grep_search", "list_dir", "read_file", "run_in_terminal"],
+    "preferred_profile": "balanced",
+    "risk_level": "medium"
+  },
+  {
+    "id": "side-pocket-deployment",
+    "role": "devops",
+    "description": "Manages Vercel deployment, environment variables, and CI/CD for Side Pocket Apparel.",
+    "tags": ["devops", "vercel", "deployment", "ci"],
+    "capabilities": ["vercel", "env-management", "deployment"],
+    "required_tools": ["run_in_terminal", "read_file", "github_repo"],
+    "preferred_profile": "power",
+    "risk_level": "medium"
+  }
+]

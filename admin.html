@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin | Side Pocket Apparel</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/admin.css" />
+</head>
+<body>
+
+<!-- ── Login Gate ── -->
+<div id="login-gate" class="admin-login-gate" style="display:none">
+  <h1>Admin Access</h1>
+  <p>Enter your admin token to access the Side Pocket dashboard.</p>
+  <div id="login-alert" class="admin-alert admin-alert-error"></div>
+  <div class="form-group">
+    <label for="admin-token-field">Admin Token</label>
+    <input id="admin-token-field" type="password" class="form-input" placeholder="Enter token..." autocomplete="off" />
+  </div>
+  <button class="btn-admin" style="width:100%;justify-content:center" onclick="attemptLogin()">Access Dashboard</button>
+</div>
+
+<!-- ── Admin Layout ── -->
+<div id="admin-app" class="admin-layout" style="display:none">
+
+  <!-- Sidebar -->
+  <aside class="admin-sidebar">
+    <div class="sidebar-logo">
+      <img src="images/logo.svg" alt="Side Pocket" />
+      <span class="sidebar-logo-text">Admin</span>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Dashboard</div>
+      <a href="#" class="active" data-tab="dashboard" onclick="showTab('dashboard',this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        Overview
+      </a>
+      <div class="nav-section-label" style="margin-top:.75rem">Store</div>
+      <a href="#" data-tab="products" onclick="showTab('products',this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        Products
+      </a>
+      <a href="#" data-tab="orders" onclick="showTab('orders',this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        Orders
+      </a>
+      <a href="#" data-tab="customers" onclick="showTab('customers',this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Customers
+      </a>
+      <a href="#" data-tab="newsletter" onclick="showTab('newsletter',this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Newsletter
+      </a>
+      <div class="nav-section-label" style="margin-top:.75rem">Settings</div>
+      <a href="index.html" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        View Site
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      Side Pocket Apparel &copy; 2025
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="admin-main">
+    <header class="admin-topbar">
+      <span class="topbar-title" id="topbar-title">Overview</span>
+      <div class="topbar-actions">
+        <input id="token-display" type="password" class="admin-token-input" placeholder="Admin token" readonly />
+        <button class="btn-admin btn-outline-admin btn-admin-sm" onclick="logout()">Sign Out</button>
+      </div>
+    </header>
+
+    <div class="admin-content">
+      <div id="global-alert" class="admin-alert"></div>
+
+      <!-- ── Dashboard ── -->
+      <div id="tab-dashboard" class="tab-panel active">
+        <div class="stats-grid" id="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Total Orders</div>
+            <div class="stat-value" id="stat-orders">—</div>
+            <div class="stat-sub">all time</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Total Customers</div>
+            <div class="stat-value" id="stat-customers">—</div>
+            <div class="stat-sub">registered</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Products</div>
+            <div class="stat-value" id="stat-products">—</div>
+            <div class="stat-sub">in catalog</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Subscribers</div>
+            <div class="stat-value" id="stat-subs">—</div>
+            <div class="stat-sub">newsletter</div>
+          </div>
+        </div>
+
+        <div class="section-hdr" style="margin-top:1.5rem">
+          <h2>Recent Orders</h2>
+        </div>
+        <div class="admin-table-wrap" id="recent-orders-wrap">
+          <div class="empty-state">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            <p>No orders yet</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Products ── -->
+      <div id="tab-products" class="tab-panel">
+        <div id="products-alert" class="admin-alert"></div>
+        <div class="section-hdr">
+          <h2>Product Catalog</h2>
+          <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+            <button class="btn-admin btn-admin-sm btn-outline-admin" onclick="addProductRow()">+ Add Product</button>
+            <button class="btn-admin btn-admin-sm" onclick="saveProducts()">Save All</button>
+            <button class="btn-admin btn-admin-sm btn-outline-admin" onclick="syncInstagram()">Sync Instagram</button>
+          </div>
+        </div>
+        <div class="admin-table-wrap">
+          <div style="padding:.75rem 1rem;background:var(--surface2);border-bottom:1px solid var(--border)">
+            <div style="display:grid;grid-template-columns:56px 1fr 90px 110px 80px 70px 60px 50px;gap:.75rem;font-size:.6875rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted)">
+              <span>IMG</span><span>Name / SKU</span><span>Price</span><span>Category</span><span>Badge</span><span>Orig. Price</span><span>Published</span><span></span>
+            </div>
+          </div>
+          <div id="products-list"></div>
+        </div>
+      </div>
+
+      <!-- ── Orders ── -->
+      <div id="tab-orders" class="tab-panel">
+        <div class="section-hdr">
+          <h2>All Orders</h2>
+        </div>
+        <div class="admin-table-wrap" id="orders-table-wrap">
+          <table class="admin-table" id="orders-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>User ID</th>
+                <th>Items</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody id="orders-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ── Customers ── -->
+      <div id="tab-customers" class="tab-panel">
+        <div class="section-hdr">
+          <h2>Registered Customers</h2>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Name</th>
+                <th>Joined</th>
+              </tr>
+            </thead>
+            <tbody id="customers-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ── Newsletter ── -->
+      <div id="tab-newsletter" class="tab-panel">
+        <div class="section-hdr">
+          <h2>Newsletter Subscribers</h2>
+          <button class="btn-admin btn-admin-sm btn-outline-admin" onclick="exportNewsletter()">Export CSV</button>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Email</th>
+                <th>Subscribed</th>
+              </tr>
+            </thead>
+            <tbody id="newsletter-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </div><!-- /admin-content -->
+  </main>
+</div><!-- /admin-app -->
+
+<script>
+'use strict';
+
+const TOKEN_KEY = 'sp_admin_token';
+let adminToken = '';
+let allProducts = [];
+
+// ── Auth ──────────────────────────────────────────────────
+function attemptLogin() {
+  const t = document.getElementById('admin-token-field').value.trim();
+  if (!t) return showLoginAlert('Enter your admin token');
+  adminToken = t;
+  localStorage.setItem(TOKEN_KEY, t);
+  document.getElementById('token-display').value = t;
+  verifyAndLoad();
+}
+
+function logout() {
+  localStorage.removeItem(TOKEN_KEY);
+  adminToken = '';
+  document.getElementById('admin-app').style.display = 'none';
+  document.getElementById('login-gate').style.display = 'block';
+}
+
+function showLoginAlert(msg) {
+  const el = document.getElementById('login-alert');
+  el.textContent = msg;
+  el.classList.add('show');
+}
+
+async function verifyAndLoad() {
+  try {
+    const r = await adminFetch('/api/admin/orders');
+    if (!r.ok) { showLoginAlert('Invalid token'); return; }
+    document.getElementById('login-gate').style.display = 'none';
+    document.getElementById('admin-app').style.display = 'flex';
+    loadDashboard();
+    loadProducts();
+    loadOrders();
+    loadCustomers();
+    loadNewsletter();
+  } catch (e) {
+    showLoginAlert('Could not connect to server');
+  }
+}
+
+async function adminFetch(url, opts) {
+  const options = opts || {};
+  options.headers = options.headers || {};
+  options.headers['x-admin-token'] = adminToken;
+  if (options.body && typeof options.body !== 'string') options.body = JSON.stringify(options.body);
+  if (options.body) options.headers['Content-Type'] = 'application/json';
+  return fetch(url, options);
+}
+
+// ── Tab navigation ────────────────────────────────────────
+const tabTitles = { dashboard: 'Overview', products: 'Products', orders: 'Orders', customers: 'Customers', newsletter: 'Newsletter' };
+
+function showTab(name, el) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.sidebar-nav a').forEach(a => a.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  if (el) el.classList.add('active');
+  document.getElementById('topbar-title').textContent = tabTitles[name] || name;
+  if (typeof event !== 'undefined' && event) event.preventDefault();
+  return false;
+}
+
+// ── Dashboard ─────────────────────────────────────────────
+async function loadDashboard() {
+  try {
+    const [oRes, uRes, nlRes, pRes] = await Promise.all([
+      adminFetch('/api/admin/orders'),
+      adminFetch('/api/admin/users'),
+      adminFetch('/api/admin/newsletter'),
+      fetch('/api/products')
+    ]);
+    const orders = oRes.ok ? (await oRes.json()).orders || [] : [];
+    const users = uRes.ok ? (await uRes.json()).users || [] : [];
+    const nl = nlRes.ok ? (await nlRes.json()).subscribers || [] : [];
+    const prods = pRes.ok ? (await pRes.json()).products || [] : [];
+
+    document.getElementById('stat-orders').textContent = orders.length;
+    document.getElementById('stat-customers').textContent = users.length;
+    document.getElementById('stat-products').textContent = prods.length;
+    document.getElementById('stat-subs').textContent = nl.length;
+
+    // Recent orders table
+    const wrap = document.getElementById('recent-orders-wrap');
+    if (!orders.length) return;
+    const recent = orders.slice(-5).reverse();
+    wrap.innerHTML = `<table class="admin-table"><thead><tr><th>#</th><th>User</th><th>Amount</th><th>Status</th><th>Date</th></tr></thead><tbody>${
+      recent.map(o => `<tr>
+        <td>#${o.id}</td>
+        <td>${o.user_id}</td>
+        <td>$${((o.amount_cents||0)/100).toFixed(2)}</td>
+        <td><span class="badge badge-blue">${o.status}</span></td>
+        <td>${new Date(o.created_at).toLocaleDateString()}</td>
+      </tr>`).join('')
+    }</tbody></table>`;
+  } catch (e) { console.warn('loadDashboard error', e); }
+}
+
+// ── Products ──────────────────────────────────────────────
+async function loadProducts() {
+  try {
+    const r = await fetch('/api/products');
+    const data = await r.json();
+    allProducts = data.products || [];
+    renderProductList();
+  } catch (e) { showProductAlert('Could not load products', 'error'); }
+}
+
+function renderProductList() {
+  const el = document.getElementById('products-list');
+  if (!allProducts.length) {
+    el.innerHTML = '<div class="empty-state"><p>No products. Click "+ Add Product" to start.</p></div>';
+    return;
+  }
+  el.innerHTML = allProducts.map((p, i) => `
+    <div class="product-row" id="prod-row-${i}">
+      ${p.image ? `<img class="product-thumb" src="${escHtml(p.image)}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="product-thumb-placeholder" style="display:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>` : `<div class="product-thumb-placeholder"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>`}
+      <div>
+        <input class="form-input" style="margin-bottom:.3rem" value="${escHtml(p.name||'')}" onchange="updateProduct(${i},'name',this.value)" placeholder="Product name" />
+        <input class="form-input" style="font-size:.75rem;color:var(--text-muted)" value="${escHtml(p.sku||'')}" onchange="updateProduct(${i},'sku',this.value)" placeholder="SKU / slug" />
+      </div>
+      <input class="form-input" type="number" step="0.01" min="0" value="${p.price||0}" onchange="updateProduct(${i},'price',parseFloat(this.value)||0)" placeholder="Price" />
+      <select class="form-select" onchange="updateProduct(${i},'category',this.value)">
+        ${['hoodies','tees','headwear','bottoms','accessories'].map(c => `<option value="${c}" ${p.category===c?'selected':''}>${c}</option>`).join('')}
+      </select>
+      <input class="form-input" value="${escHtml(p.badge||'')}" onchange="updateProduct(${i},'badge',this.value||null)" placeholder="Badge" />
+      <input class="form-input" type="number" step="0.01" min="0" value="${p.originalPrice||''}" onchange="updateProduct(${i},'originalPrice',parseFloat(this.value)||null)" placeholder="—" />
+      <label class="toggle" title="Published">
+        <input type="checkbox" ${p.published?'checked':''} onchange="updateProduct(${i},'published',this.checked)" />
+        <span class="toggle-slider"></span>
+      </label>
+      <button class="btn-admin btn-danger btn-admin-sm" onclick="deleteProduct(${i})">✕</button>
+    </div>
+  `).join('');
+}
+
+function updateProduct(i, field, value) {
+  allProducts[i][field] = value;
+}
+
+function addProductRow() {
+  const id = Date.now();
+  allProducts.push({ id, sku: '', name: '', price: 0, category: 'tees', description: '', image: '', published: true, badge: null });
+  renderProductList();
+  document.getElementById('products-list').lastElementChild.scrollIntoView({ behavior: 'smooth' });
+}
+
+function deleteProduct(i) {
+  if (!confirm('Remove this product?')) return;
+  allProducts.splice(i, 1);
+  renderProductList();
+}
+
+async function saveProducts() {
+  try {
+    const r = await adminFetch('/api/admin/save-products', { method: 'POST', body: { products: allProducts } });
+    const d = await r.json();
+    if (d.ok) showProductAlert(`Saved ${d.count} products`, 'success');
+    else showProductAlert(d.error || 'Save failed', 'error');
+  } catch (e) { showProductAlert('Network error', 'error'); }
+}
+
+async function syncInstagram() {
+  showProductAlert('Syncing Instagram...', 'info');
+  try {
+    const r = await adminFetch('/api/admin/sync-instagram', { method: 'POST', body: {} });
+    const d = await r.json();
+    if (d.ok) { showProductAlert(`Synced ${d.count} products from Instagram`, 'success'); loadProducts(); }
+    else showProductAlert(d.error || 'Sync failed', 'error');
+  } catch (e) { showProductAlert('Network error', 'error'); }
+}
+
+function showProductAlert(msg, type) {
+  const el = document.getElementById('products-alert');
+  el.textContent = msg;
+  el.className = `admin-alert admin-alert-${type} show`;
+  setTimeout(() => el.classList.remove('show'), 4000);
+}
+
+// ── Orders ────────────────────────────────────────────────
+async function loadOrders() {
+  try {
+    const r = await adminFetch('/api/admin/orders');
+    const data = await r.json();
+    const orders = (data.orders || []).slice().reverse();
+    const tbody = document.getElementById('orders-tbody');
+    if (!orders.length) {
+      tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--text-muted);padding:2rem">No orders yet</td></tr>';
+      return;
+    }
+    tbody.innerHTML = orders.map(o => `<tr>
+      <td>#${o.id}</td>
+      <td>${o.user_id}</td>
+      <td>${Array.isArray(o.items) ? o.items.length + ' item(s)' : '—'}</td>
+      <td>$${((o.amount_cents||0)/100).toFixed(2)}</td>
+      <td><span class="badge badge-blue">${o.status}</span></td>
+      <td>${new Date(o.created_at).toLocaleDateString()}</td>
+    </tr>`).join('');
+  } catch (e) { console.warn('loadOrders error', e); }
+}
+
+// ── Customers ─────────────────────────────────────────────
+async function loadCustomers() {
+  try {
+    const r = await adminFetch('/api/admin/users');
+    const data = await r.json();
+    const users = data.users || [];
+    const tbody = document.getElementById('customers-tbody');
+    if (!users.length) {
+      tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--text-muted);padding:2rem">No customers yet</td></tr>';
+      return;
+    }
+    tbody.innerHTML = users.map(u => `<tr>
+      <td>${u.id}</td>
+      <td>${escHtml(u.email)}</td>
+      <td>${escHtml(u.name || '—')}</td>
+      <td>${new Date(u.created_at).toLocaleDateString()}</td>
+    </tr>`).join('');
+  } catch (e) { console.warn('loadCustomers error', e); }
+}
+
+// ── Newsletter ────────────────────────────────────────────
+let newsletterData = [];
+async function loadNewsletter() {
+  try {
+    const r = await adminFetch('/api/admin/newsletter');
+    const data = await r.json();
+    newsletterData = data.subscribers || [];
+    const tbody = document.getElementById('newsletter-tbody');
+    if (!newsletterData.length) {
+      tbody.innerHTML = '<tr><td colspan="3" style="text-align:center;color:var(--text-muted);padding:2rem">No subscribers yet</td></tr>';
+      return;
+    }
+    tbody.innerHTML = newsletterData.map((s, i) => `<tr>
+      <td>${i + 1}</td>
+      <td>${escHtml(s.email)}</td>
+      <td>${new Date(s.subscribed_at).toLocaleDateString()}</td>
+    </tr>`).join('');
+  } catch (e) { console.warn('loadNewsletter error', e); }
+}
+
+function exportNewsletter() {
+  if (!newsletterData.length) return;
+  const rows = ['email,subscribed_at', ...newsletterData.map(s => `${s.email},${s.subscribed_at}`)];
+  const blob = new Blob([rows.join('\n')], { type: 'text/csv' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'newsletter-subscribers.csv';
+  a.click();
+}
+
+// ── Utils ─────────────────────────────────────────────────
+function escHtml(s) {
+  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── Init ──────────────────────────────────────────────────
+(function init() {
+  const saved = localStorage.getItem(TOKEN_KEY);
+  if (saved) {
+    adminToken = saved;
+    document.getElementById('token-display').value = saved;
+    verifyAndLoad();
+  } else {
+    document.getElementById('login-gate').style.display = 'block';
+  }
+  // Allow Enter key on login
+  document.getElementById('admin-token-field').addEventListener('keydown', e => {
+    if (e.key === 'Enter') attemptLogin();
+  });
+})();
+</script>
+</body>
+</html>
